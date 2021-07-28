@@ -1,0 +1,30 @@
+package day06;
+
+/**
+ * grades
+ */
+public class grades {
+
+    public static void main(String[] args) {
+        int[] num = new int[10];
+        for (int i = 0; i < num.length; i++) {
+            num[i]=(int)(Math.random()*89+10+1);
+        }
+        int max = 0;
+        int min = 100;
+        int sum = 0;
+        int ave = 0;
+        for (int i = 0; i < num.length; i++) {
+           //计算最大值和最小值
+           if (num[i]>max) {
+               max= num[i];
+           } 
+           if (num[i]<min) {
+               min= num[i];
+           }
+           sum+=num[i];
+        }
+        ave = sum/num.length;
+        System.out.println(max+" "+min+" "+sum+" "+ave);
+    }
+}
