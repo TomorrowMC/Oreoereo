@@ -1,0 +1,50 @@
+
+package test;
+
+import java.util.Scanner;
+
+/**
+ * test
+ */
+public class test {
+
+   public static void main(String[] args) {
+      Scanner scan = new Scanner(System.in);
+      System.out.println("请输入学生人数");
+      int studentNumber = scan.nextInt();
+      Student[] studentForm = new Student[studentNumber];
+      for (int i = 0; i < studentNumber ; i++) {
+         //给学生的学号，成绩，年级随机分配
+        studentForm[i] =new Student();
+        studentForm[i].number = i+1;
+        studentForm[i].state=(int)(Math.random()*6+1);
+        studentForm[i].score= (int)(Math.random()*41+60);
+      }
+      for (int i = 0; i < studentForm.length; i++) {
+         //输出三年级的学生信息
+         if (studentForm[i].state==3) {
+            System.out.print(studentForm[i].number+" "+studentForm[i].state+" "+studentForm[i].score);
+            System.out.println();
+         }
+         //冒泡排序
+         for (int j = 0; j < studentForm.length-1; j++) {
+            if (studentForm[j].score>studentForm[j+1].score) {    
+               //整体调换
+            Student temp = new Student();
+            temp=studentForm[j];
+            studentForm[j]=studentForm[j+1];
+            studentForm[j+1]=temp;
+            }
+         }
+      }
+      for (int i = 0; i < studentForm.length; i++) {
+         System.out.print(studentForm[i].number+" "+studentForm[i].state+" "+studentForm[i].score);
+         System.out.println();
+      }
+   }
+}
+class Student{
+   int number;
+   int state;
+   int score;
+}
