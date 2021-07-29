@@ -1,0 +1,144 @@
+//很想知道59的地方应该怎么调用self
+
+
+//优化一版
+
+package test;
+
+import java.util.Scanner;
+
+/**
+ * test
+ */
+public class test {
+public static void main(String[] args) {
+   System.out.println("请输入学生人数");
+   Scanner scan = new Scanner(System.in);
+   int numOfStudents=scan.nextInt();
+   //创建学生了：
+  Student[] listOfStudents = new Student[numOfStudents];//初始化学生名单
+  //接下来往名单里加学生
+  for (int i = 0; i < listOfStudents.length; i++) {
+     listOfStudents[i]= new Student();
+     listOfStudents[i].newStudent(listOfStudents[i], i+1);
+  }
+//学生已经全部加完了，现在先遍历一次名单，看看效果
+for (int i = 0; i < listOfStudents.length; i++) {
+   System.out.println("学号是："+listOfStudents[i].number+" 年级是："+listOfStudents[i].state+" 成绩是："+listOfStudents[i].score);
+}
+//效果不错！接下来打印三年级的学生
+System.out.println("以下是3年级的学生");
+for (int i = 0; i < listOfStudents.length; i++) {
+   if (listOfStudents[i].state==3) {
+      System.out.println("学号是："+listOfStudents[i].number+" 年级是："+listOfStudents[i].state+" 成绩是："+listOfStudents[i].score);
+   }
+}
+//效果不错，接下来冒泡排序大家的成绩
+System.out.println("以下是排序过后的所有学生");
+for (int i = 0; i < listOfStudents.length-1; i++) {
+   for (int j = 0; j < listOfStudents.length-1; j++) {
+      if (listOfStudents[j].score>listOfStudents[j+1].score) {
+         Student temp =new Student();
+         temp=listOfStudents[j];
+         listOfStudents[j]=listOfStudents[j+1];
+         listOfStudents[j+1]=temp;
+      }
+   }
+}
+//最后检验一下冒泡排序是否成功
+for (int i = 0; i < listOfStudents.length; i++) {
+   System.out.println("学号是："+listOfStudents[i].number+" 年级是："+listOfStudents[i].state+" 成绩是："+listOfStudents[i].score); 
+}
+}
+}
+
+class Student {
+int number;
+int state;
+int score;
+public void newStudent(Student puple,int index) {
+puple.number= index;
+puple.state=(int)(Math.random()*6+1);
+puple.score=(int)(Math.random()*41+60);
+}
+
+}
+
+//封装版
+package test;
+
+import java.util.Scanner;
+
+/**
+ * test
+ */
+public class test {
+public static void main(String[] args) {
+   System.out.println("请输入学生人数");
+   Scanner scan = new Scanner(System.in);
+   int numOfStudents=scan.nextInt();
+   //创建学生了：
+  Student[] listOfStudents1 = new Student[numOfStudents];//初始化学生名单
+  //接下来往名单里加学生
+ test headmaster=new test();
+ headmaster.newStudentList(listOfStudents1);
+
+//学生已经全部加完了，现在先遍历一次名单，看看效果
+for (int i = 0; i < listOfStudents1.length; i++) {
+   System.out.println("学号是："+listOfStudents1[i].number+" 年级是："+listOfStudents1[i].state+" 成绩是："+listOfStudents1[i].score);
+}
+//效果不错！接下来打印三年级的学生
+System.out.println("以下是3年级的学生");
+headmaster.sortThirdStudents(listOfStudents1);
+//效果不错，接下来冒泡排序大家的成绩
+System.out.println("以下是排序过后的所有学生");
+headmaster.bubbleSort(listOfStudents1);
+//最后检验一下冒泡排序是否成功
+for (int i = 0; i < listOfStudents1.length; i++) {
+   System.out.println("学号是："+listOfStudents1[i].number+" 年级是："+listOfStudents1[i].state+" 成绩是："+listOfStudents1[i].score); 
+}
+
+}//以下是所有的主方法
+//创建完整的学生名单
+public void newStudentList(Student[] listOfStudents) {
+   for (int i = 0; i < listOfStudents.length; i++) {
+      listOfStudents[i]= new Student();
+      listOfStudents[i].newStudent(listOfStudents[i], i+1);
+   }
+}
+//打印所有三年级学生
+public void sortThirdStudents(Student[] listOfStudents) {
+   for (int i = 0; i < listOfStudents.length; i++) {
+      if (listOfStudents[i].state==3) {
+         System.out.println("学号是："+listOfStudents[i].number+" 年级是："+listOfStudents[i].state+" 成绩是："+listOfStudents[i].score);
+      }
+   }
+}
+public void bubbleSort(Student[] listOfStudents) {
+   for (int i = 0; i < listOfStudents.length-1; i++) {
+      for (int j = 0; j < listOfStudents.length-1; j++) {
+         if (listOfStudents[j].score>listOfStudents[j+1].score) {
+            Student temp =new Student();
+            temp=listOfStudents[j];
+            listOfStudents[j]=listOfStudents[j+1];
+            listOfStudents[j+1]=temp;
+         }
+      }
+   }
+}
+
+
+
+}
+
+class Student {
+int number;
+int state;
+int score;
+public void newStudent(Student puple,int index) {
+puple.number= index;
+puple.state=(int)(Math.random()*6+1);
+puple.score=(int)(Math.random()*41+60);
+}
+
+}
