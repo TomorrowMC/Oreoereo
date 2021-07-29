@@ -1,0 +1,17 @@
+package test;
+
+/**
+ * test
+ */
+public class test {
+public static void main(String[] args) {
+   circle one = new circle();
+   one.areaOfCircle(10);
+}
+}
+
+class circle{
+public void areaOfCircle(int radiousOfCircle) {
+   System.out.println(Math.PI*(Math.pow(radiousOfCircle, 2)));
+}
+}
