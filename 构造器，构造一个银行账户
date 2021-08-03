@@ -1,0 +1,98 @@
+package test;
+
+/**
+ * test
+ */
+public class test {
+
+     public static void main(String[] args) {
+          Customer c1= new Customer("Jane", "Smith");
+          Account a1= new Account(2036513, 2000, 0.0123);
+          c1.setAccount(a1);
+          c1.getAccount().deposit(100);
+          c1.getAccount().withdraw(960);
+          c1.getAccount().withdraw(2000);
+          System.out.println("Customer " + "["+c1.getLastName()+" "+ c1.getFirstName() +"] has an account:id is "+ c1.getAccount().getId()+" annualInterestRate is "+c1.getAccount().getAnnualInterestRate());
+     }
+}
+class Account{
+     private int id;
+     private double balance;
+     private double annualInterestRate;
+     
+     public Account() {
+     }
+     
+     public Account(int id, double balance, double annualInterestRate) {
+          this.id = id;
+          this.balance = balance;
+          this.annualInterestRate = annualInterestRate;
+     }
+
+     public int getId() {
+          return id;
+     }
+     public void setId(int id) {
+          this.id = id;
+     }
+     public double getBalance() {
+          return balance;
+     }
+     public void setBalance(double balance) {
+          this.balance = balance;
+     }
+     public double getAnnualInterestRate() {
+          return annualInterestRate;
+     }
+     public void setAnnualInterestRate(double annualInterestRate) {
+          this.annualInterestRate = annualInterestRate;
+     }
+     public void withdraw (double amount)//取钱 
+     {
+if (balance<amount) {
+     System.out.println("余额不足取款失败");
+} else {
+     balance-=amount;
+     System.out.println("成功取出："+amount);
+}
+     }
+     public void deposit (double amount)//存钱
+     {
+if (amount>0) {
+     balance+=amount;
+     System.out.println("成功存入："+amount);
+} else {
+     
+}
+     }
+}
+class Customer{
+     private String firstName ;
+     private String lastName ;
+     private Account account;
+     public void setAccount(Account account) {
+          this.account = account;
+     }
+     public Customer() {
+     }
+     public Customer(String firstName, String lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+
+     }
+     
+     
+
+     public String getFirstName() {
+          return firstName;
+     }
+
+     public String getLastName() {
+          return lastName;
+     }
+
+     public Account getAccount() {
+          return account;
+     }
+     
+}
