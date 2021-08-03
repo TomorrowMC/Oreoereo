@@ -1,0 +1,32 @@
+package test;
+
+/**
+ * test
+ */
+public class test {
+
+     public static void main(String[] args) {
+          TriAngle a =new TriAngle(10, 5);
+          TriAngleTest test = new TriAngleTest();
+          System.out.println(test.getArea(a));
+     }
+}
+class TriAngle{
+     private int base;
+     private int height;
+     public TriAngle(int b,int h){
+          base =b;
+          height=h;
+     }
+     public int getbase() {
+          return base;
+     }
+     public int getheight() {
+          return height;
+     }
+}
+class TriAngleTest{
+     public int getArea(TriAngle a) {
+          return a.getbase()*a.getheight()/2;
+     }
+}
