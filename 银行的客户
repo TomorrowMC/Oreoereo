@@ -1,0 +1,55 @@
+package test;
+
+
+
+/**
+ * test
+ */
+public class test {
+
+     public static void main(String[] args) {
+          Customer c1 = new Customer("Hu", "Yifei");
+          Bank bank1=new Bank();
+          bank1.addCustomer(c1);
+          System.out.println(bank1.getNumberOfCustomer());
+     System.out.println(bank1.getCustomer(0).getLastName());
+     }
+}
+class Customer{
+     private String firstName;
+     private String lastName;
+     public Customer(String firstName,String lastName){
+this.firstName=firstName;
+this.lastName=lastName;
+     }
+     public String getFirstName() {
+          return firstName;
+     }
+     public void setFirstName(String firstName) {
+          this.firstName = firstName;
+     }
+     public String getLastName() {
+          return lastName;
+     }
+     public void setLastName(String lastName) {
+          this.lastName = lastName;
+     }
+     
+}
+class Bank{
+     private Customer[] customers;
+     private int numberOfCustomer=0;
+     public Bank(){
+          customers=new Customer[40];
+     }
+     public void addCustomer(Customer p1) {
+          customers[numberOfCustomer]=p1;    
+          numberOfCustomer+=1;
+     }
+     public int getNumberOfCustomer() {
+          return numberOfCustomer;
+     }
+     public Customer getCustomer(int i) {
+          return customers[i];
+     }
+}
